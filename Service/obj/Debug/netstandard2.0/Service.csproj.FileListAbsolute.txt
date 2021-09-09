@@ -1,0 +1,13 @@
+C:\DDD\Service\bin\Debug\netstandard2.0\Service.deps.json
+C:\DDD\Service\bin\Debug\netstandard2.0\Service.dll
+C:\DDD\Service\bin\Debug\netstandard2.0\Service.pdb
+C:\DDD\Service\obj\Debug\netstandard2.0\Service.AssemblyInfoInputs.cache
+C:\DDD\Service\obj\Debug\netstandard2.0\Service.AssemblyInfo.cs
+C:\DDD\Service\obj\Debug\netstandard2.0\Service.dll
+C:\DDD\Service\obj\Debug\netstandard2.0\Service.pdb
+C:\DDD\Service\obj\Debug\netstandard2.0\Service.csprojAssemblyReference.cache
+C:\DDD\Service\bin\Debug\netstandard2.0\Entities.dll
+C:\DDD\Service\bin\Debug\netstandard2.0\ORM.dll
+C:\DDD\Service\bin\Debug\netstandard2.0\ORM.pdb
+C:\DDD\Service\bin\Debug\netstandard2.0\Entities.pdb
+C:\DDD\Service\obj\Debug\netstandard2.0\Service.csproj.CopyComplete
