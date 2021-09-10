@@ -2982,6 +2982,9 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AutoMapper": "10.1.1",
+          "MassTransit": "7.2.2",
+          "MassTransit.AspNetCore": "7.2.2",
+          "MassTransit.RabbitMQ": "7.2.2",
           "ORM": "1.0.0"
         },
         "compile": {

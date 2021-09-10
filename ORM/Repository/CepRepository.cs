@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Entities.Dtos;
@@ -7,14 +8,26 @@ namespace ORM.Repository
 {
     // public class CepRepository : ICepRepository
     // {
-    //     public async Task<CepDto> GetCepAsync(string cep)
-    //     {
-    //         string url = $"https://viacep.com.br/ws/{cep}/json/";
-    //         HttpClient httpClient = new HttpClient();
-    //         HttpResponseMessage resposta = await httpClient.GetAsync(url);
-    //         resposta.EnsureSuccessStatusCode();
+    // public async Task<CepDto> GetCep(string cep)
+    // {
+    // try
+    // {
 
-    //         return await resposta.Content.ReadAsStringAsync();
+    //     string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+    //     HttpClient ceps = new HttpClient();
+    //     var response = await ceps.GetAsync(url);
+    //     if (!response.IsSuccessStatusCode)
+    //     {
+    //         return null;
     //     }
+
+    //     return await response.Content.ReadAsAsync<CepDto>();
+    // }
+    // catch (Exception e)
+    // {
+    //     throw new Exception(e.Message);
+    // }
+    // }
     // }
 }

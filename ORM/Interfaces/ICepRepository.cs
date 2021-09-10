@@ -5,6 +5,6 @@ namespace ORM.Interfaces
 {
     public interface ICepRepository
     {
-        Task<CepDto> GetCepAsync(CepDto cep);
+        Task<CepDto> GetCep(string cep);
     }
 }

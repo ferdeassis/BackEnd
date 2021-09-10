@@ -6,7 +6,7 @@ namespace ORM.Interfaces
     {
         Propostas GetCpf(string cpf);
         void Add(Propostas obj);
-        // void Remove(int id);
         void Update(Propostas obj);
+        DadosFila FilaProposta(int proposta);
     }
 }

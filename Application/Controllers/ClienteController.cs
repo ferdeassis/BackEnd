@@ -18,24 +18,6 @@ namespace Application.Controllers
             _clienteService = clienteService;
         }
 
-        // [HttpGet]
-        // [Authorize]
-        // public ActionResult GetAll()
-        // {
-        //     if (!ModelState.IsValid)
-        //         return BadRequest(ModelState);
-
-        //     try
-        //     {
-        //         var resultado = _clienteRepository.GetAll();
-        //         return Ok(resultado);
-        //     }
-        //     catch (ArgumentException e)
-        //     {
-        //         return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-        //     }
-        // }
-
         [HttpGet("{cpf}")]
         [Authorize]
         public ActionResult Get(string cpf)
@@ -89,23 +71,5 @@ namespace Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
         }
-
-        // [HttpDelete("{id}")]
-        // [Authorize]
-        // public ActionResult Delete(int id)
-        // {
-        //     if (!ModelState.IsValid)
-        //         return BadRequest(ModelState);
-
-        //     try
-        //     {
-        //         _clienteRepository.Remove(id);
-        //         return Ok();
-        //     }
-        //     catch (ArgumentException e)
-        //     {
-        //         return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-        //     }
-        // }
     }
 }

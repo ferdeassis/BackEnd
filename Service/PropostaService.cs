@@ -1,6 +1,7 @@
 using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using Entities;
+using MassTransit;
 using ORM.Interfaces;
 using Service.Interfaces;
 
@@ -8,15 +9,16 @@ namespace Service
 {
     public class PropostaService : IPropostaService
     {
-        private IPropostaRepository _propostaRepository;
-        private IParametroRepository _parametroRepository;
-        //private ICalcularJurosService _calcularJuros;
-        public PropostaService(IPropostaRepository propostaRepository, IParametroRepository parametroRepository)
+        private readonly IPropostaRepository _propostaRepository;
+        private readonly IParametroRepository _parametroRepository;
+        private readonly IBusControl _busControl;
+        public PropostaService(IPropostaRepository propostaRepository, IParametroRepository parametroRepository, IBusControl busControl)
         {
             _propostaRepository = propostaRepository;
             _parametroRepository = parametroRepository;
+            _busControl = busControl;
         }
-        public void Add(Propostas obj)
+        public async Task AddAsync(Propostas obj)
         {
             try
             {
@@ -29,13 +31,14 @@ namespace Service
                 if (obj.Cpf == null)
                     throw new Exception("CPF Inváilido");
                 CalcularJuros(obj.Prazo, obj.Vlr_Solicitado);
-
+                _propostaRepository.Add(obj);
+                var df = FilaProposta(obj.Proposta);
+                await FilaPostAsync(df);
             }
             catch (Exception e)
             {
                 throw e;
             }
-            _propostaRepository.Add(obj);
         }
         public Propostas GetCpf(string cpf)
         {
@@ -70,6 +73,16 @@ namespace Service
             var juros = (_parametroRepository.GetParametro().Juro_Composto) / 100;
             var calculoJuros = Convert.ToDouble(Vlr_Solicitado) * Math.Pow(1 + Convert.ToDouble(juros), prazo);
             return (decimal)calculoJuros;
+        }
+
+        public DadosFila FilaProposta(int proposta)
+        {
+            return _propostaRepository.FilaProposta(proposta);
+        }
+
+        public async Task FilaPostAsync(DadosFila dadosFila)
+        {
+            await _busControl.Publish<DadosFila>(dadosFila);
         }
     }
 }

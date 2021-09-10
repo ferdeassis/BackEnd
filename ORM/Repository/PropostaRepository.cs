@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using Dapper;
 using Entities;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +23,6 @@ namespace ORM.Repository
                 parameters.Add("@prazo", obj.Prazo);
                 parameters.Add("@vlrFinanciado", obj.Vlr_Financiado);
                 parameters.Add("@situacao", obj.Situacao);
-                //parameters.Add("@observacao", obj.Observacao);
                 parameters.Add("@dtSituacao", DateTime.Now);
                 parameters.Add("@usuario", obj.Usuario);
                 parameters.Add("@usuarioAtualizacao", obj.Usuario_Atualizacao);
@@ -166,6 +164,37 @@ namespace ORM.Repository
             {
                 connect.Execute(sql, parameter);
             }
+        }
+
+        public DadosFila FilaProposta(int proposta)
+        {
+            try
+            {
+                DadosFila retorno;
+                var parameters = new DynamicParameters();
+                parameters.Add("@proposta", proposta);
+
+                string sql = $@"SELECT
+                                TP.PROPOSTA,
+                                TP.PRAZO,
+                                TP.CONVENIADA,
+                                TP.VLR_FINANCIADO,
+                                TC.DT_NASCIMENTO
+                            FROM [dbo].[TREINA_PROPOSTAS] AS TP
+                            INNER JOIN [dbo].[TREINA_CLIENTES] AS TC
+                            ON TP.CPF = TC.CPF
+                            WHERE TP.PROPOSTA = @proposta";
+                using (var connect = new SqlConnection(base.GetConnection()))
+                {
+                    retorno = connect.QueryFirstOrDefault<DadosFila>(sql, parameters);
+                }
+                return retorno;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
         }
     }
 }

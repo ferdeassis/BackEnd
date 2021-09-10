@@ -1,5 +1,6 @@
 using System;
 using System.Net;
+using System.Threading.Tasks;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,14 +38,14 @@ namespace Application.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Add(Propostas obj)
+        public async Task<ActionResult> Add(Propostas obj)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                _propostaService.Add(obj);
+                await _propostaService.AddAsync(obj);
                 return Ok();
             }
             catch (ArgumentException e)
@@ -70,7 +71,5 @@ namespace Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
         }
-
-
     }
 }

@@ -9,8 +9,8 @@ C:\projeto_crud\Entities\obj\Debug\netstandard2.0\Entities.pdb
 C:\DDD\Entities\bin\Debug\netstandard2.0\Entities.deps.json
 C:\DDD\Entities\bin\Debug\netstandard2.0\Entities.dll
 C:\DDD\Entities\bin\Debug\netstandard2.0\Entities.pdb
-C:\DDD\Entities\obj\Debug\netstandard2.0\Entities.csprojAssemblyReference.cache
 C:\DDD\Entities\obj\Debug\netstandard2.0\Entities.AssemblyInfoInputs.cache
 C:\DDD\Entities\obj\Debug\netstandard2.0\Entities.AssemblyInfo.cs
 C:\DDD\Entities\obj\Debug\netstandard2.0\Entities.dll
 C:\DDD\Entities\obj\Debug\netstandard2.0\Entities.pdb
+C:\DDD\Entities\obj\Debug\netstandard2.0\Entities.csprojAssemblyReference.cache

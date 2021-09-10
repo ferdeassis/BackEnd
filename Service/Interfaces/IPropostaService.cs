@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using Entities;
 
 namespace Service.Interfaces
@@ -6,10 +6,10 @@ namespace Service.Interfaces
     public interface IPropostaService
     {
         Propostas GetCpf(string cpf);
-        void Add(Propostas obj);
-        // void Remove(int id);
+        Task AddAsync(Propostas obj);
         void Update(Propostas obj);
         decimal CalcularJuros(int prazo, decimal Vlr_Solicitado);
         void ValidarPrazo(int prazo);
+        DadosFila FilaProposta(int proposta);
     }
 }
