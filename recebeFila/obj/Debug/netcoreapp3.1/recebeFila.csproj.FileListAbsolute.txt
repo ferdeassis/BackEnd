@@ -1,0 +1,3 @@
+C:\recebeFila\obj\Debug\netcoreapp3.1\recebeFila.csprojAssemblyReference.cache
+C:\recebeFila\obj\Debug\netcoreapp3.1\recebeFila.AssemblyInfoInputs.cache
+C:\recebeFila\obj\Debug\netcoreapp3.1\recebeFila.AssemblyInfo.cs
