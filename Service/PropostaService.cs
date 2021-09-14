@@ -71,7 +71,7 @@ namespace Service
         {
             ValidarPrazo(prazo);
             var juros = (_parametroRepository.GetParametro().Juro_Composto) / 100;
-            var calculoJuros = Convert.ToDouble(Vlr_Solicitado) * Math.Pow(1 + Convert.ToDouble(juros), prazo);
+            var calculoJuros = Convert.ToDouble(Vlr_Solicitado) * (Math.Pow(1 + Convert.ToDouble(juros), prazo));
             return (decimal)calculoJuros;
         }
 

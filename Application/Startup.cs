@@ -41,7 +41,6 @@ namespace Application
             services.AddTransient<IParametroRepository, ParametroRepository>();
             services.AddTransient<ITokenGenerator, TokenGenerator>();
             services.AddTransient<IConsultaPropostaRepository, ConsultaPropostaRepository>();
-            services.AddTransient<ICalcularJurosService, CalcularJurosService>();
 
             services.AddMassTransit(x =>
             {

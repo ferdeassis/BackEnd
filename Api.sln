@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM", "ORM\ORM.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{3E1DF025-F9F1-4794-AC01-CB82D906F4DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteUnitario", "TesteUnitario\TesteUnitario.csproj", "{C368EA9C-5EA7-4A56-9785-E1C92CBDDEC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculos.tests", "calculos.tests\calculos.tests.csproj", "{E75EE36D-CE2E-48BD-BD6D-770BC857F922}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,5 +110,17 @@ Global
 		{C368EA9C-5EA7-4A56-9785-E1C92CBDDEC7}.Release|x64.Build.0 = Release|Any CPU
 		{C368EA9C-5EA7-4A56-9785-E1C92CBDDEC7}.Release|x86.ActiveCfg = Release|Any CPU
 		{C368EA9C-5EA7-4A56-9785-E1C92CBDDEC7}.Release|x86.Build.0 = Release|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Debug|x64.Build.0 = Debug|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Debug|x86.Build.0 = Debug|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Release|x64.ActiveCfg = Release|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Release|x64.Build.0 = Release|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Release|x86.ActiveCfg = Release|Any CPU
+		{E75EE36D-CE2E-48BD-BD6D-770BC857F922}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
