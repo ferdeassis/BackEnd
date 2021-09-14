@@ -1,11 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using MassTransit;
+using Microsoft.Extensions.Configuration;
 
 namespace recebeFila
 {
     class Program
     {
+
         static async Task Main(string[] args)
         {
             var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>

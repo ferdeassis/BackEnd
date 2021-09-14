@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ORM.Interfaces;
 using Service.Interfaces;
 
 namespace Application.Controllers

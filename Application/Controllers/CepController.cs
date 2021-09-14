@@ -1,8 +1,11 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
+using Entities.Dtos;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using ORM.Interfaces;
 
 namespace Application.Controllers
 {
@@ -31,6 +34,18 @@ namespace Application.Controllers
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
+        }
+
+        private readonly ICepRepository _cepRepository;
+
+        public CepController(ICepRepository cepRepository)
+        {
+            _cepRepository = cepRepository;
+        }
+        public async Task<CepDto> Get(string cep)
+        {
+            var ceps = await _cepRepository.GetCep(cep);
+            return ceps;
         }
     }
 }
