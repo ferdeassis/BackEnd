@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Entities.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ORM.Interfaces;
@@ -15,38 +16,14 @@ namespace Application.Controllers
     public class CepController : Controller
     {
         private readonly ICepRepository _cepRepository;
-
-
-        // public ActionResult GetCep(string cep)
-        // {
-        //     try
-        //     {
-        //         string url = $"https://viacep.com.br/ws/{cep}/json/";
-        //         HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-        //         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-        //         using (Stream stream = response.GetResponseStream())
-        //         {
-        //             StreamReader reader = new StreamReader(stream);
-        //             string responseFromServer = reader.ReadToEnd();
-        //             response.Close();
-        //             return Ok(responseFromServer);
-        //         }
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-        //     }
-        // }
-
-
-
         public CepController(ICepRepository cepRepository)
         {
             _cepRepository = cepRepository;
         }
 
         [HttpGet("{cep}")]
-        public async Task<CepDto> Get(string cep)
+        [Authorize]
+        public async Task<CepDto> Get([FromRoute] string cep)
         {
             var ceps = await _cepRepository.GetCep(cep);
             return ceps;

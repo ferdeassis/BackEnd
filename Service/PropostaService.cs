@@ -70,9 +70,12 @@ namespace Service
         public decimal CalcularJuros(int prazo, decimal Vlr_Solicitado)
         {
             ValidarPrazo(prazo);
-            var juros = (_parametroRepository.GetParametro().Juro_Composto) / 100;
-            var calculoJuros = Convert.ToDouble(Vlr_Solicitado) * (Math.Pow(1 + Convert.ToDouble(juros), prazo));
-            return (decimal)calculoJuros;
+            var juros = (_parametroRepository.GetParametro().Juro_Composto);
+            decimal percent = (decimal)(juros / 100m);
+            var calculoJuros = (double)Vlr_Solicitado * (Math.Pow(1 + (double)percent, prazo));
+            var converter = calculoJuros.ToString("#.##");
+            var valor = Convert.ToDecimal(converter);
+            return valor;
         }
 
         public DadosFila FilaProposta(int proposta)
