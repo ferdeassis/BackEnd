@@ -1,0 +1,80 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\recebeFila\\recebeFila.csproj": {}
+  },
+  "projects": {
+    "C:\\recebeFila\\recebeFila.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\recebeFila\\recebeFila.csproj",
+        "projectName": "recebeFila",
+        "projectPath": "C:\\recebeFila\\recebeFila.csproj",
+        "packagesPath": "C:\\Users\\fdeassis\\.nuget\\packages\\",
+        "outputPath": "C:\\recebeFila\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\fdeassis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.90, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.118\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
