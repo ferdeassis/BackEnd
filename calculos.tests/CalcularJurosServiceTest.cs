@@ -20,7 +20,7 @@ namespace calculos.tests
 
             var cj = new PropostaService(propostaRepository, parametroRepository, busControlTeste);
             var resultado = cj.CalcularJuros(10, 1000);
-            Assert.AreEqual(1104.62, resultado);
+            Assert.AreEqual((decimal)1104.62, (decimal)resultado);
         }
     }
 }
