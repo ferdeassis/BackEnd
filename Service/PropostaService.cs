@@ -20,38 +20,24 @@ namespace Service
         }
         public async Task AddAsync(Propostas obj)
         {
-            try
-            {
-                if (obj.Prazo == 0 || obj.Prazo > 100)
-                    throw new Exception("Prazo Inváilido");
-                if (obj.Situacao == null)
-                    throw new Exception("Situação Inváilida");
-                if (obj.Vlr_Solicitado == 0)
-                    throw new Exception("Valor Solicitado Inváilido");
-                if (obj.Cpf == null)
-                    throw new Exception("CPF Inváilido");
-                CalcularJuros(obj.Prazo, obj.Vlr_Solicitado);
-                _propostaRepository.Add(obj);
-                var df = FilaProposta(obj.Proposta);
-                await FilaPostAsync(df);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            if (obj.Prazo == 0 || obj.Prazo > 100)
+                throw new Exception("Prazo Inváilido");
+            if (obj.Situacao == null)
+                throw new Exception("Situação Inváilida");
+            if (obj.Vlr_Solicitado == 0)
+                throw new Exception("Valor Solicitado Inváilido");
+            if (obj.Cpf == null)
+                throw new Exception("CPF Inváilido");
+            CalcularJuros(obj.Prazo, obj.Vlr_Solicitado);
+            _propostaRepository.Add(obj);
+            var df = FilaProposta(obj.Proposta);
+            await FilaPostAsync(df);
         }
         public Propostas GetCpf(string cpf)
         {
-            try
+            if (cpf == "undefined")
             {
-                if (cpf == "undefined")
-                {
-                    throw new System.Exception("Cpf não informado");
-                }
-            }
-            catch (System.Exception)
-            {
-                throw;
+                throw new System.Exception("Cpf não informado");
             }
             return _propostaRepository.GetCpf(cpf);
         }

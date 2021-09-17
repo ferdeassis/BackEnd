@@ -13,23 +13,16 @@ namespace ORM.Repository
 
         public Parametro GetParametro()
         {
-            try
-            {
-                string sql = $@"SELECT 
+            string sql = $@"SELECT 
                                 ID_TREINA_PARAMETROS, 
                                 ULTIMA_PROPOSTA, 
                                 JURO_COMPOSTO, 
                                 USUARIO_ATUALIZACAO, 
                                 DATA_ATUALIZACAO 
                             FROM [dbo].[TREINA_PARAMETROS]";
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    return connect.Query<Parametro>(sql).FirstOrDefault();
-                }
-            }
-            catch (Exception e)
+            using (var connect = new SqlConnection(base.GetConnection()))
             {
-                throw e;
+                return connect.Query<Parametro>(sql).FirstOrDefault();
             }
         }
 

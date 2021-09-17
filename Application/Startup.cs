@@ -1,5 +1,4 @@
 using System.Text;
-using Application.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +13,7 @@ using Service;
 using Service.Interfaces;
 using MassTransit;
 using System;
+using Service.Token;
 
 namespace Application
 {

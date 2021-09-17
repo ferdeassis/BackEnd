@@ -33,26 +33,19 @@ namespace ORM.Repository
         {
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("@conveniada", conveniada);
-            try
-            {
-                string sql = $@"SELECT
-                                ID_TREINA_CONVENIADA,
-                                CONVENIADA,
-                                DESCRICAO,
-                                USUARIO_ATUALIZACAO,
-                                DATA_ATUALIZACAO
-                            FROM [dbo].[TREINA_CONVENIADAS]
-                            WHERE CONVENIADA = @conveniada";
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    return connect.QueryFirstOrDefault<Conveniadas>(sql, parameter);
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
 
+            string sql = $@"SELECT
+                            ID_TREINA_CONVENIADA,
+                            CONVENIADA,
+                            DESCRICAO,
+                            USUARIO_ATUALIZACAO,
+                            DATA_ATUALIZACAO
+                        FROM [dbo].[TREINA_CONVENIADAS]
+                        WHERE CONVENIADA = @conveniada";
+            using (var connect = new SqlConnection(base.GetConnection()))
+            {
+                return connect.QueryFirstOrDefault<Conveniadas>(sql, parameter);
+            }
         }
     }
 }

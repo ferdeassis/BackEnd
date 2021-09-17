@@ -10,26 +10,18 @@ namespace ORM.Repository
 {
     public class CepRepository : ICepRepository
     {
+        private static HttpClient ceps = new HttpClient();
         public async Task<CepDto> GetCep(string cep)
         {
-            try
+            string url = $"https://viacep.com.br/ws/{cep}/json/";
+            var response = await ceps.GetAsync(url);
+            if (!response.IsSuccessStatusCode)
             {
-                string url = $"https://viacep.com.br/ws/{cep}/json/";
-
-                HttpClient ceps = new HttpClient();
-                var response = await ceps.GetAsync(url);
-                if (!response.IsSuccessStatusCode)
-                {
-                    return null;
-                }
-                var result = await response.Content.ReadAsStringAsync();
-                CepDto c = JsonConvert.DeserializeObject<CepDto>(result);
-                return c;
+                return null;
             }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            var result = await response.Content.ReadAsStringAsync();
+            CepDto c = JsonConvert.DeserializeObject<CepDto>(result);
+            return c;
         }
     }
 }

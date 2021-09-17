@@ -60,62 +60,9 @@ namespace ORM
                 connect.Execute(sql, pam);
             }
         }
-
-        // public Clientes Get(int id)
-        // {
-        //     string sql = $@"SELECT
-        //                     ID_TREINA_CLIENTE,
-        //                     CPF,
-        //                     NOME,
-        //                     FORMAT (DT_NASCIMENTO, 'dd-MM-yyyy') AS DT_NASCIMENTO,
-        //                     GENERO,
-        //                     VLR_SALARIO,
-        //                     LOGRADOURO,
-        //                     NUMERO_RESIDENCIA,
-        //                     BAIRRO,
-        //                     CIDADE,
-        //                     CEP,
-        //                     USUARIO_ATUALIZACAO,
-        //                     DATA_ATUALIZACAO
-        //                  FROM [dbo].[TREINA_CLIENTES]
-        //                  WHERE ID_TREINA_CLIENTE = {id}";
-
-        //     using (var connect = new SqlConnection(base.GetConnection()))
-        //     {
-        //         return connect.Query<Clientes>(sql).FirstOrDefault();
-        //     }
-        // }
-
-        // public IEnumerable<Clientes> GetAll()
-        // {
-        //     IEnumerable<Clientes> retorno;
-        //     string sql = $@"SELECT
-        //                     ID_TREINA_CLIENTE,
-        //                     CPF,
-        //                     NOME,
-        //                     FORMAT (DT_NASCIMENTO, 'dd-MM-yyyy') AS DT_NASCIMENTO,
-        //                     GENERO,
-        //                     VLR_SALARIO,
-        //                     LOGRADOURO,
-        //                     NUMERO_RESIDENCIA,
-        //                     BAIRRO,
-        //                     CIDADE,
-        //                     CEP,
-        //                     USUARIO_ATUALIZACAO,
-        //                     DATA_ATUALIZACAO
-        //                  FROM [dbo].[TREINA_CLIENTES]";
-        //     using (var connect = new SqlConnection(base.GetConnection()))
-        //     {
-        //         retorno = connect.Query<Clientes>(sql);
-        //     }
-        //     return retorno;
-        // }
-
         public Cliente GetCpf(string cpf)
         {
-            try
-            {
-                string sql = $@"SELECT
+            string sql = $@"SELECT
                             ID_TREINA_CLIENTE,
                             CPF,
                             NOME,
@@ -132,30 +79,11 @@ namespace ORM
                          FROM [dbo].[TREINA_CLIENTES]
                          WHERE CPF = {cpf}";
 
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    return connect.Query<Cliente>(sql).FirstOrDefault();
-                }
-            }
-            catch (Exception e)
+            using (var connect = new SqlConnection(base.GetConnection()))
             {
-                throw e;
+                return connect.Query<Cliente>(sql).FirstOrDefault();
             }
         }
-
-        // public void Remove(int id)
-        // {
-        //     DynamicParameters param = new DynamicParameters();
-        //     param.Add("@id", id);
-
-        //     string sql = $@"DELETE FROM [dbo].[TREINA_CLIENTES]
-        //                  WHERE ID_TREINA_CLIENTE = @id";
-
-        //     using (var connect = new SqlConnection(base.GetConnection()))
-        //     {
-        //         connect.Execute(sql, param);
-        //     }
-        // }
 
         public void Update(Cliente obj)
         {

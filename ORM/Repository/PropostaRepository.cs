@@ -13,22 +13,20 @@ namespace ORM.Repository
 
         public void Add(Propostas obj)
         {
-            try
-            {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@proposta", obj.Proposta);
-                parameters.Add("@cpf", obj.Cpf);
-                parameters.Add("@conveniada", obj.Conveniada);
-                parameters.Add("@vlrSolicitado", obj.Vlr_Solicitado);
-                parameters.Add("@prazo", obj.Prazo);
-                parameters.Add("@vlrFinanciado", obj.Vlr_Financiado);
-                parameters.Add("@situacao", obj.Situacao);
-                parameters.Add("@dtSituacao", DateTime.Now);
-                parameters.Add("@usuario", obj.Usuario);
-                parameters.Add("@usuarioAtualizacao", obj.Usuario_Atualizacao);
-                parameters.Add("@dtAtualizacao", DateTime.Now);
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@proposta", obj.Proposta);
+            parameters.Add("@cpf", obj.Cpf);
+            parameters.Add("@conveniada", obj.Conveniada);
+            parameters.Add("@vlrSolicitado", obj.Vlr_Solicitado);
+            parameters.Add("@prazo", obj.Prazo);
+            parameters.Add("@vlrFinanciado", obj.Vlr_Financiado);
+            parameters.Add("@situacao", obj.Situacao);
+            parameters.Add("@dtSituacao", DateTime.Now);
+            parameters.Add("@usuario", obj.Usuario);
+            parameters.Add("@usuarioAtualizacao", obj.Usuario_Atualizacao);
+            parameters.Add("@dtAtualizacao", DateTime.Now);
 
-                string sql = $@"INSERT INTO [dbo].[TREINA_PROPOSTAS]
+            string sql = $@"INSERT INTO [dbo].[TREINA_PROPOSTAS]
                                 (
                                     PROPOSTA,
                                     CPF,
@@ -55,14 +53,9 @@ namespace ORM.Repository
                                     @usuarioAtualizacao,
                                     @dtAtualizacao
                                 )";
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    connect.Execute(sql, parameters);
-                }
-            }
-            catch (Exception e)
+            using (var connect = new SqlConnection(base.GetConnection()))
             {
-                throw e;
+                connect.Execute(sql, parameters);
             }
         }
         public IEnumerable<Propostas> GetUser(string usuario)
@@ -95,9 +88,7 @@ namespace ORM.Repository
         }
         public Propostas GetCpf(string cpf)
         {
-            try
-            {
-                string sql = $@"SELECT
+            string sql = $@"SELECT
                                 TP.ID_TREINA_PROPOSTA,
                                 TP.PROPOSTA,
                                 TP.CPF,
@@ -122,14 +113,9 @@ namespace ORM.Repository
                             INNER JOIN [DBO].[TREINA_SITUACAO] AS TS ON
                             TP.SITUACAO = TS.SITUACAO
                             WHERE TP.CPF = {cpf}";
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    return connect.QueryFirstOrDefault<Propostas>(sql);
-                }
-            }
-            catch (Exception e)
+            using (var connect = new SqlConnection(base.GetConnection()))
             {
-                throw e;
+                return connect.QueryFirstOrDefault<Propostas>(sql);
             }
         }
 
@@ -168,13 +154,11 @@ namespace ORM.Repository
 
         public DadosFila FilaProposta(int proposta)
         {
-            try
-            {
-                DadosFila retorno;
-                var parameters = new DynamicParameters();
-                parameters.Add("@proposta", proposta);
+            DadosFila retorno;
+            var parameters = new DynamicParameters();
+            parameters.Add("@proposta", proposta);
 
-                string sql = $@"SELECT
+            string sql = $@"SELECT
                                 TP.PROPOSTA,
                                 TP.PRAZO,
                                 TP.CONVENIADA,
@@ -184,16 +168,11 @@ namespace ORM.Repository
                             INNER JOIN [dbo].[TREINA_CLIENTES] AS TC
                             ON TP.CPF = TC.CPF
                             WHERE TP.PROPOSTA = @proposta";
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    retorno = connect.QueryFirstOrDefault<DadosFila>(sql, parameters);
-                }
-                return retorno;
-            }
-            catch (Exception e)
+            using (var connect = new SqlConnection(base.GetConnection()))
             {
-                throw e;
+                retorno = connect.QueryFirstOrDefault<DadosFila>(sql, parameters);
             }
+            return retorno;
         }
     }
 }

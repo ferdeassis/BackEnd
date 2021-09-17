@@ -1,10 +1,10 @@
 using System;
 using System.Net;
-using Application.Token;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using ORM.Interfaces;
+using Service.Token;
 
 namespace Application.Controllers
 {

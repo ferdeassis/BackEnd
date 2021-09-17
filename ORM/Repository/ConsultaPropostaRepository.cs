@@ -13,13 +13,9 @@ namespace ORM.Repository
 
         public IEnumerable<Propostas> GetUser(string usuario)
         {
-            try
-            {
-                // var parameter = new DynamicParameters();
-                // parameter.Add("@usuario", usuario);
 
-                IEnumerable<Propostas> listaProposta;
-                string sql = $@"SELECT
+            IEnumerable<Propostas> listaProposta;
+            string sql = $@"SELECT
                                     TP.ID_TREINA_PROPOSTA,
                                     TP.PROPOSTA,
                                     TP.CPF,
@@ -44,17 +40,11 @@ namespace ORM.Repository
                                 INNER JOIN [DBO].[TREINA_SITUACAO] AS TS ON
                                 TP.SITUACAO = TS.SITUACAO
                                 WHERE USUARIO = '{usuario}'";
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    listaProposta = connect.Query<Propostas>(sql);
-                }
-                return listaProposta;
-            }
-            catch (Exception e)
+            using (var connect = new SqlConnection(base.GetConnection()))
             {
-                throw e;
+                listaProposta = connect.Query<Propostas>(sql);
             }
-
+            return listaProposta;
         }
     }
 }

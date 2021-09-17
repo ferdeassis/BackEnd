@@ -31,11 +31,9 @@ namespace ORM.Repository
 
         public Situacao GetDescricao(string situacao)
         {
-            try
-            {
-                var parametros = new DynamicParameters();
-                parametros.Add("@situacao", situacao);
-                string sql = $@"SELECT
+            var parametros = new DynamicParameters();
+            parametros.Add("@situacao", situacao);
+            string sql = $@"SELECT
 	                            ID_TREINA_SITUACAO,
 	                            SITUACAO as TIPOSITUACAO,
                                 DESCRICAO,
@@ -43,16 +41,10 @@ namespace ORM.Repository
                                 DATA_ATUALIZACAO
                             FROM [dbo].[TREINA_SITUACAO]
                             WHERE SITUACAO = @situacao";
-                using (var connect = new SqlConnection(base.GetConnection()))
-                {
-                    return connect.QueryFirstOrDefault<Situacao>(sql, parametros);
-                }
-            }
-            catch (Exception e)
+            using (var connect = new SqlConnection(base.GetConnection()))
             {
-                throw e;
+                return connect.QueryFirstOrDefault<Situacao>(sql, parametros);
             }
-
         }
     }
 }
